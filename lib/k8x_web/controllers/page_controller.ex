@@ -4,4 +4,10 @@ defmodule K8xWeb.PageController do
   def home(conn, _params) do
     render(conn, :home)
   end
+
+  def health(conn, _params) do
+    conn
+    |> put_status(:ok)
+    |> json(%{status: "ok"})
+  end
 end

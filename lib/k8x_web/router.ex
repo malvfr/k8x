@@ -17,6 +17,7 @@ defmodule K8xWeb.Router do
   scope "/", K8xWeb do
     pipe_through :browser
 
+    get "/health", PageController, :health
     get "/", PageController, :home
   end
 
