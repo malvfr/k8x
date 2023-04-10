@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8x-service
+spec:
+  type: ClusterIP
+  selector:
+    app: k8xsrv
+  ports:
+    - name: k8x-service
+      port: 80
+      targetPort: 4000
+      protocol: TCP

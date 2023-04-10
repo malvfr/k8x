@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8xsrv
+spec:
+  selector:
+    matchLabels:
+      app: k8xsrv
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: k8xsrv
+    spec:
+      containers:
+        - name: k8xcontainer
+          image: malvfr/k8x:v1.0.1
+          envFrom:
+            - configMapRef:
+                name: k8x-cfg-map
+          env:
+            - name: SECRET_KEY_BASE
+              value: U2FLdi9OcG13bzVaK0xkVytzdjF4aXZCZHM0ZGFIU09WcjlwSEE1Y1E4aXdWWGYyN
+          resources:
+            requests:
+              cpu: "0.05"
+              memory: "100Mi"
+            limits:
+              memory: "200Mi"
+              cpu: "0.1"
