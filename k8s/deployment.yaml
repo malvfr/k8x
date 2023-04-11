@@ -14,7 +14,12 @@ spec:
     spec:
       containers:
         - name: k8xcontainer
-          image: malvfr/k8x:v1.0.1
+          image: malvfr/k8x:v1.0.4
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
           envFrom:
             - secretRef:
                 name: k8xsrv-secret
